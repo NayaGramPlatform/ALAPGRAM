@@ -1,1 +1,96 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0969da">
+<title>ALAPGRAM — Reviewer Portal</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;padding:24px;
+ display:grid;place-items:center;
+ background:radial-gradient(circle at top,#16477e,#071426 65%);
+ color:#f3f8ff;font-family:Arial,sans-serif
+}
+main{width:min(100%,680px)}
+header{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.logo{
+ width:52px;height:52px;border-radius:17px;
+ display:grid;place-items:center;
+ background:linear-gradient(145deg,#69bdff,#0961df);
+ font-size:27px;font-weight:bold
+}
+.brand{font-size:23px;font-weight:bold}
+.sub{font-size:13px;color:#aec2da;margin-top:4px}
+.card{
+ padding:30px;border:1px solid #254568;border-radius:23px;
+ background:linear-gradient(145deg,#102945,#0a1b30);
+ box-shadow:0 20px 60px #0006
+}
+.tag{color:#65b4ff;font-size:12px;letter-spacing:2px}
+h1{font-size:34px;line-height:1.15;margin:13px 0}
+p{color:#aec2da;line-height:1.7}
+.status{
+ margin:23px 0;padding:15px;border-radius:13px;
+ background:#3a2d19;border:1px solid #765b2d;
+ color:#ffe3ad;font-size:14px;line-height:1.6
+}
+section{border-top:1px solid #254568;padding-top:19px;margin-top:20px}
+h2{font-size:17px}
+.notice{
+ padding:15px;background:#091a2d;border:1px solid #244362;
+ border-radius:13px;font-size:13px
+}
+footer{text-align:center;color:#7893b2;font-size:11px;margin-top:20px}
+@media(max-width:480px){.card{padding:22px}h1{font-size:29px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+ <div class="logo">A</div>
+ <div>
+  <div class="brand">ALAPGRAM</div>
+  <div class="sub">Google Play Reviewer Portal</div>
+ </div>
+</header>
+
+<div class="card">
+ <div class="tag">APP REVIEW ACCESS</div>
+ <h1>Welcome, Google Play Review Team</h1>
+ <p>Thank you for reviewing ALAPGRAM. This portal provides information about our dedicated test environment.</p>
+
+ <div class="status">
+  <strong>Test account setup is in progress.</strong><br>
+  No test credentials or verification codes are published here yet.
+ </div>
+
+ <section>
+  <h2>Reviewer Instructions</h2>
+  <p>1. Install ALAPGRAM using the review build.</p>
+  <p>2. Use the dedicated reviewer test account provided through Play Console.</p>
+  <p>3. If access is unavailable, use the developer contact information supplied in Play Console.</p>
+ </section>
+
+ <section>
+  <h2>Test Environment</h2>
+  <p>A dedicated test environment will be provided so reviewers can evaluate the app without using the developer's personal Telegram account.</p>
+ </section>
+
+ <section class="notice">
+  <strong>Security & Privacy</strong>
+  <p>This page does not collect passwords, phone numbers or Telegram verification codes. Never publish personal credentials or OTPs on a public webpage.</p>
+ </section>
+</div>
+
+<footer>
+ ALAPGRAM · Unofficial third-party Telegram client<br>
+ Not affiliated with Telegram or Google.<br>
+ Reviewer portal · Test access integration pending
+</footer>
+</main>
+</body>
+</html>
