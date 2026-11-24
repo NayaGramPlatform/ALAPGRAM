@@ -26,7 +26,9 @@
       --text: #FFFFFF;
       --text-secondary: #E2ECF8;
       --text-muted: #B0C4DE;
-      --brand-accent: #38BDF8;
+      --brand-accent: #22D3EE;
+      --countdown-color: #22D3EE;
+      --countdown-soon: #FBBF24;
       --title-color: #38BDF8;
       --accent: #0EA5E9;
       --accent-hover: #38BDF8;
@@ -63,6 +65,8 @@
       --text-secondary: #1E324B;
       --text-muted: #425B78;
       --brand-accent: #0284C7;
+      --countdown-color: #0284C7;
+      --countdown-soon: #D97706;
       --title-color: #0369A1;
       --accent: #0284C7;
       --accent-hover: #0369A1;
@@ -178,11 +182,22 @@
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1;
-      color: var(--text);
+      color: var(--brand-accent);
+      text-shadow: 0 0 24px rgba(34, 211, 238, 0.22);
     }
 
-    .brand-name-accent {
-      color: var(--brand-accent);
+    [data-theme="light"] .brand-name {
+      text-shadow: none;
+    }
+
+    .countdown-val {
+      color: var(--countdown-color);
+      font-weight: 700;
+      transition: color 180ms ease;
+    }
+
+    .countdown-val.soon {
+      color: var(--countdown-soon);
     }
 
     .header-controls {
@@ -702,7 +717,7 @@
           >
           <span class="brand-logo-fallback" aria-hidden="true">NG</span>
         </span>
-        <span class="brand-name">Naya<span class="brand-name-accent">Gram</span></span>
+        <span class="brand-name">NayaGram</span>
       </a>
 
       <div class="header-controls">
@@ -739,7 +754,7 @@
             <span id="liveText">Live</span>
           </span>
           <span class="sep" aria-hidden="true">·</span>
-          <span id="countdownText" class="mono">25s</span>
+          <span id="countdownText" class="mono countdown-val">25s</span>
           <span class="sep" aria-hidden="true">·</span>
           <span id="lastRefreshedTime" class="mono">--.--.----, --:--:-- UTC</span>
         </div>
@@ -940,7 +955,9 @@
         const t = I18N[state.lang];
         $("liveText").textContent = state.online ? t.live : t.reconnecting;
         $("liveDot").classList.toggle("reconnecting", !state.online);
-        $("countdownText").textContent = t.nextIn(state.secondsLeft);
+        const cdEl = $("countdownText");
+        cdEl.textContent = t.nextIn(state.secondsLeft);
+        cdEl.classList.toggle("soon", state.secondsLeft <= 5);
         $("lastRefreshedTime").textContent = state.lastRefreshed
           ? formatUtcTimestamp(state.lastRefreshed)
           : "--.--.----, --:--:-- UTC";
@@ -1256,7 +1273,9 @@
           if (state.secondsLeft <= 0) {
             refreshCodes();
           } else {
-            $("countdownText").textContent = I18N[state.lang].nextIn(state.secondsLeft);
+            const cdEl = $("countdownText");
+            cdEl.textContent = I18N[state.lang].nextIn(state.secondsLeft);
+            cdEl.classList.toggle("soon", state.secondsLeft <= 5);
           }
         }
         document.querySelectorAll("[data-rel-time]").forEach((el) => {

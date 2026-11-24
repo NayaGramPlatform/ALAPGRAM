@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: nayagram-otp-sync
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: "8080"
+      - key: GITHUB_REPOSITORY
+        value: "NayaGramPlatform/ALAPGRAM"
+      - key: GITHUB_BRANCH
+        value: "main"
+      - key: OTP_TTL_MINUTES
+        value: "30"
+      - key: TELEGRAM_API_ID
+        sync: false
+      - key: TELEGRAM_API_HASH
+        sync: false
+      - key: TELEGRAM_SESSION
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false
