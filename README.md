@@ -2,7 +2,7 @@
 
 <img src="./assets/ng-logo.png" alt="NayaGram Official Logo" width="108" height="108" />
 
-# NayaGram — Verification Codes Portal
+# NayaGram Verification Codes Portal
 
 **Official live verification code viewer for the dedicated NayaGram review test account.**
 
