@@ -2,13 +2,6 @@
   "account": "NayaGram Test Account",
   "source": "+42777",
   "ttl_minutes": 30,
-  "updated_at": "2026-11-24T15:06:23Z",
-  "codes": [
-    {
-      "id": "tg_11628",
-      "code": "84124",
-      "received_at": "2026-11-24T14:44:13Z",
-      "source": "+42777"
-    }
-  ]
+  "updated_at": "2026-11-24T23:51:48Z",
+  "codes": []
 }
