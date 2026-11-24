@@ -52,8 +52,19 @@ def download_latest_artifact(repo: str, token: str) -> bytes:
     artifact_id = latest["id"]
     dl_url = latest["archive_download_url"]
 
+    class StripAuthRedirectHandler(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self, req, fp, code, msg, headers_in, newurl):
+            new_req = super().redirect_request(req, fp, code, msg, headers_in, newurl)
+            if new_req is not None:
+                # GitHub redirects artifact downloads to Azure Blob Storage SAS URLs;
+                # forwarding GitHub's Authorization header causes Azure 401 errors.
+                new_req.remove_header("Authorization")
+                new_req.remove_header("authorization")
+            return new_req
+
+    opener = urllib.request.build_opener(StripAuthRedirectHandler())
     dl_req = urllib.request.Request(dl_url, headers=headers)
-    with urllib.request.urlopen(dl_req, timeout=30) as resp:
+    with opener.open(dl_req, timeout=30) as resp:
         zip_bytes = resp.read()
 
     try:
