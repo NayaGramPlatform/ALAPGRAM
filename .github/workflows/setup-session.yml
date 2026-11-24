@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       step:
-        description: 'Step 1: Send OTP to +8801320917532 | Step 2: Verify OTP & send session to Saved Messages'
+        description: 'Step 1: Send OTP to your test account | Step 2: Verify OTP & send session to Saved Messages'
         required: true
         type: choice
         default: '1-send-otp'
@@ -41,7 +41,7 @@ jobs:
         env:
           TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
           TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
-          TEST_PHONE_NUMBER: '+8801320917532'
+          TEST_PHONE_NUMBER: ${{ secrets.TEST_PHONE_NUMBER }}
         run: python3 scripts/phone_setup.py send
 
       - name: Upload encrypted pending state (1-day expiry)

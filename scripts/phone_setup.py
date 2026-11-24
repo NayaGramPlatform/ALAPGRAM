@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 """
 Phone-Friendly NayaGram Test Account Session Setup (No Computer Required)
-Runs securely inside GitHub Actions:
-  Step 1 (send):   Sends Telegram OTP to +8801320917532 and saves AES-encrypted pending_login.enc
-  Step 2 (verify): Downloads & decrypts pending_login.enc, verifies OTP, and sends the private
-                   TELEGRAM_SESSION strictly to the test account's own Telegram Saved Messages ("me").
-                   NEVER prints TELEGRAM_SESSION to public logs!
+Reads TEST_PHONE_NUMBER strictly from encrypted GitHub Actions Secrets (never hardcoded or printed).
 """
 
 import argparse
@@ -26,7 +22,6 @@ from telethon import TelegramClient
 from telethon.errors import SessionPasswordNeededError
 from telethon.sessions import StringSession
 
-DEFAULT_PHONE = "+8801320917532"
 ARTIFACT_NAME = "pending-otp-state"
 STATE_FILE = Path("pending_login.enc")
 
@@ -61,7 +56,6 @@ def download_latest_artifact(repo: str, token: str) -> bytes:
     with urllib.request.urlopen(dl_req, timeout=30) as resp:
         zip_bytes = resp.read()
 
-    # Best-effort delete temporary artifact after download
     try:
         del_req = urllib.request.Request(
             f"https://api.github.com/repos/{repo}/actions/artifacts/{artifact_id}",
@@ -81,6 +75,7 @@ def download_latest_artifact(repo: str, token: str) -> bytes:
 
 
 async def step_send(api_id: int, api_hash: str, phone: str):
+    print(f"::add-mask::{phone}", flush=True)
     client = TelegramClient(StringSession(), api_id, api_hash)
     await client.connect()
     try:
@@ -92,8 +87,8 @@ async def step_send(api_id: int, api_hash: str, phone: str):
         }).encode("utf-8")
         encrypted = make_cipher(api_hash).encrypt(payload)
         STATE_FILE.write_bytes(encrypted)
-        print(f"[ok] Telegram OTP request sent to {phone}.", flush=True)
-        print("[next] Check your Telegram/SMS for the 5-digit code, then run Step 2 (2-verify-otp).", flush=True)
+        print("[ok] Telegram OTP request sent to your configured test account.", flush=True)
+        print("[next] Check Telegram/SMS for the 5-digit code, then run Step 2 (2-verify-otp).", flush=True)
     finally:
         await client.disconnect()
 
@@ -113,6 +108,7 @@ async def step_verify(api_id: int, api_hash: str, otp_code: str, two_fa: str, re
         sys.exit(1)
 
     phone = pending["phone"]
+    print(f"::add-mask::{phone}", flush=True)
     phone_code_hash = pending["phone_code_hash"]
     partial_session = pending["session"]
 
@@ -132,20 +128,15 @@ async def step_verify(api_id: int, api_hash: str, otp_code: str, two_fa: str, re
             await client.sign_in(password=two_fa)
 
         final_session = client.session.save()
-        # Mask immediately so GitHub Actions can never accidentally reveal it
         print(f"::add-mask::{final_session}", flush=True)
 
-        # Deliver privately to the test account's own Telegram Saved Messages ("me")
         msg_text = (
             "NayaGram Verification Portal — TELEGRAM_SESSION\n\n"
-            "Copy the entire code below and paste it into GitHub:\n"
-            "ALAPGRAM -> Settings -> Secrets and variables -> Actions -> New repository secret\n"
-            "Name: TELEGRAM_SESSION\n\n"
+            "Copy the entire code below and save it in GitHub Actions Secrets as TELEGRAM_SESSION:\n\n"
             f"`{final_session}`"
         )
         await client.send_message("me", msg_text, parse_mode="markdown")
-        print("[success] Sign-in complete! Your private TELEGRAM_SESSION has been sent to Saved Messages on your test Telegram account.", flush=True)
-        print("[next] Open Telegram Saved Messages on +8801320917532, tap to copy the session string, and save it as GitHub Secret TELEGRAM_SESSION.", flush=True)
+        print("[success] Sign-in complete! Your private TELEGRAM_SESSION has been sent to Saved Messages on your test account.", flush=True)
     finally:
         await client.disconnect()
 
@@ -160,7 +151,7 @@ def main():
 
     api_id_raw = os.environ.get("TELEGRAM_API_ID", "").strip()
     api_hash = os.environ.get("TELEGRAM_API_HASH", "").strip()
-    phone = os.environ.get("TEST_PHONE_NUMBER", DEFAULT_PHONE).strip() or DEFAULT_PHONE
+    phone = os.environ.get("TEST_PHONE_NUMBER", "").strip()
     two_fa = os.environ.get("TELEGRAM_2FA_PASSWORD", "").strip()
     gh_token = os.environ.get("GITHUB_TOKEN", "").strip()
     gh_repo = os.environ.get("GITHUB_REPOSITORY", "NayaGramPlatform/ALAPGRAM").strip()
@@ -171,6 +162,9 @@ def main():
 
     api_id = int(api_id_raw)
     if args.cmd == "send":
+        if not phone:
+            print("[error] TEST_PHONE_NUMBER secret must be configured in repository secrets.", file=sys.stderr)
+            sys.exit(1)
         asyncio.run(step_send(api_id, api_hash, phone))
     else:
         asyncio.run(step_verify(api_id, api_hash, args.code, two_fa, gh_repo, gh_token))

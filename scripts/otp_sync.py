@@ -2,11 +2,7 @@
 """
 NayaGram Test Account OTP Sync Service
 Strictly reads ONLY official Telegram login code notifications from user ID 777000 (+42777)
-for the dedicated Google Play review test account. Personal chats are never accessed.
-
-Modes:
-  --once    Fetch recent login codes once and update local codes.json (for GitHub Actions)
-  --daemon  Stay connected in real time and push codes.json via GitHub API within 1 second
+for the dedicated review test account. Personal chats and phone numbers are never exposed publicly.
 """
 
 import argparse
@@ -27,11 +23,10 @@ from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 
 TELEGRAM_SERVICE_USER_ID = 777000  # Official Telegram notifications (+42777)
-DEFAULT_ACCOUNT = "+8801320917532"
+PUBLIC_ACCOUNT_LABEL = "NayaGram Test Account"
 DEFAULT_TTL_MINUTES = 30
 MAX_CODES = 10
 
-# Strictly match official Telegram login verification codes (5-6 digits)
 OTP_PATTERNS = [
     re.compile(r"(?:Login code|Web login code|Verification code)\s*:\s*(\d{5,6})\b", re.IGNORECASE),
     re.compile(r"\bcode\s*[:\-]\s*(\d{5,6})\b", re.IGNORECASE),
@@ -41,7 +36,6 @@ LOGIN_KEYWORDS = ("login", "code", "sign in", "verification", "telegram")
 
 
 def extract_otp_code(text: str):
-    """Return the 5-6 digit Telegram login code if and only if text is a login OTP message."""
     if not text:
         return None
     for pattern in OTP_PATTERNS:
@@ -50,7 +44,6 @@ def extract_otp_code(text: str):
             return m.group(1)
     lower = text.lower()
     if any(kw in lower for kw in LOGIN_KEYWORDS):
-        # Exclude 42777 phone number itself if mentioned
         for m in FALLBACK_DIGITS.finditer(text):
             candidate = m.group(1)
             if candidate != "42777":
@@ -70,7 +63,7 @@ def iso_utc(dt: datetime.datetime) -> str:
     return dt.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def build_payload(codes_list: list, account: str, ttl_minutes: int) -> dict:
+def build_payload(codes_list: list, ttl_minutes: int) -> dict:
     cutoff = utc_now() - datetime.timedelta(minutes=ttl_minutes)
     filtered = []
     seen_ids = set()
@@ -90,7 +83,7 @@ def build_payload(codes_list: list, account: str, ttl_minutes: int) -> dict:
     filtered = filtered[:MAX_CODES]
 
     return {
-        "account": account,
+        "account": PUBLIC_ACCOUNT_LABEL,
         "source": "+42777",
         "ttl_minutes": ttl_minutes,
         "updated_at": iso_utc(utc_now()),
@@ -103,7 +96,6 @@ def codes_signature(payload: dict) -> list:
 
 
 def write_local_json(path: Path, payload: dict) -> bool:
-    """Write codes.json only if codes changed or file does not exist. Returns True if changed."""
     if path.exists():
         try:
             existing = json.loads(path.read_text(encoding="utf-8"))
@@ -119,7 +111,6 @@ def write_local_json(path: Path, payload: dict) -> bool:
 
 
 def push_to_github_api(payload: dict, repo: str, token: str, branch: str = "main", file_path: str = "codes.json") -> bool:
-    """Push updated codes.json directly to GitHub via Contents API (instant live update)."""
     api_url = f"https://api.github.com/repos/{repo}/contents/{file_path}"
     headers = {
         "Authorization": f"Bearer {token}",
@@ -164,7 +155,7 @@ def push_to_github_api(payload: dict, repo: str, token: str, branch: str = "main
     try:
         with urllib.request.urlopen(put_req, timeout=15) as resp:
             if resp.status in (200, 201):
-                print(f"[sync] Published {len(payload['codes'])} active code(s) to {repo}/{file_path}", flush=True)
+                print(f"[sync] Published {len(payload['codes'])} active code(s)", flush=True)
                 return True
     except urllib.error.HTTPError as e:
         print(f"[warn] GitHub PUT failed: HTTP {e.code}", flush=True)
@@ -172,7 +163,6 @@ def push_to_github_api(payload: dict, repo: str, token: str, branch: str = "main
 
 
 async def fetch_recent_777000_codes(client: TelegramClient, ttl_minutes: int) -> list:
-    """Strictly read ONLY messages from Telegram official service ID 777000 (+42777)."""
     cutoff = utc_now() - datetime.timedelta(minutes=ttl_minutes)
     results = []
     async for msg in client.iter_messages(TELEGRAM_SERVICE_USER_ID, limit=15):
@@ -195,7 +185,6 @@ async def fetch_recent_777000_codes(client: TelegramClient, ttl_minutes: int) ->
 
 
 def start_health_server(port: int):
-    """Lightweight health endpoint so free cloud hosts (Koyeb/Render) keep daemon healthy."""
     class Handler(http.server.BaseHTTPRequestHandler):
         def do_GET(self):
             self.send_response(200)
@@ -216,7 +205,6 @@ async def run(mode: str, output_path: Path):
     api_id_raw = os.environ.get("TELEGRAM_API_ID", "").strip()
     api_hash = os.environ.get("TELEGRAM_API_HASH", "").strip()
     session_str = os.environ.get("TELEGRAM_SESSION", "").strip()
-    account = os.environ.get("TEST_PHONE_NUMBER", DEFAULT_ACCOUNT).strip() or DEFAULT_ACCOUNT
     ttl_minutes = int(os.environ.get("OTP_TTL_MINUTES", str(DEFAULT_TTL_MINUTES)))
     gh_token = os.environ.get("GITHUB_TOKEN", "").strip()
     gh_repo = os.environ.get("GITHUB_REPOSITORY", "NayaGramPlatform/ALAPGRAM").strip()
@@ -226,19 +214,19 @@ async def run(mode: str, output_path: Path):
         print("[error] TELEGRAM_API_ID and TELEGRAM_API_HASH must be set.", file=sys.stderr)
         sys.exit(1)
     if not session_str:
-        print("[info] TELEGRAM_SESSION is not configured yet. Run scripts/create_session.py once and add TELEGRAM_SESSION to GitHub Secrets.", flush=True)
+        print("[info] TELEGRAM_SESSION is not configured yet. Run Phone Session Setup first.", flush=True)
         sys.exit(0)
 
     api_id = int(api_id_raw)
     client = TelegramClient(StringSession(session_str), api_id, api_hash)
     await client.connect()
     if not await client.is_user_authorized():
-        print("[error] TELEGRAM_SESSION is invalid or revoked. Re-generate with scripts/create_session.py.", file=sys.stderr)
+        print("[error] TELEGRAM_SESSION is invalid or revoked. Re-run Phone Session Setup.", file=sys.stderr)
         await client.disconnect()
         sys.exit(1)
 
     def publish(codes_list: list):
-        payload = build_payload(codes_list, account, ttl_minutes)
+        payload = build_payload(codes_list, ttl_minutes)
         if mode == "once":
             changed = write_local_json(output_path, payload)
             print(f"[once] Active codes: {len(payload['codes'])}, changed: {changed}", flush=True)
@@ -247,7 +235,6 @@ async def run(mode: str, output_path: Path):
             if gh_token and gh_repo:
                 push_to_github_api(payload, gh_repo, gh_token, gh_branch)
 
-    # Initial sync on startup
     recent = await fetch_recent_777000_codes(client, ttl_minutes)
     publish(recent)
 
@@ -255,7 +242,6 @@ async def run(mode: str, output_path: Path):
         await client.disconnect()
         return
 
-    # Real-time daemon mode
     port_env = os.environ.get("PORT", "").strip()
     if port_env.isdigit():
         start_health_server(int(port_env))
