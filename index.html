@@ -1,96 +1,1098 @@
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0969da">
-<title>ALAPGRAM — Reviewer Portal</title>
-<style>
-*{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;padding:24px;
- display:grid;place-items:center;
- background:radial-gradient(circle at top,#16477e,#071426 65%);
- color:#f3f8ff;font-family:Arial,sans-serif
-}
-main{width:min(100%,680px)}
-header{display:flex;align-items:center;gap:14px;margin-bottom:22px}
-.logo{
- width:52px;height:52px;border-radius:17px;
- display:grid;place-items:center;
- background:linear-gradient(145deg,#69bdff,#0961df);
- font-size:27px;font-weight:bold
-}
-.brand{font-size:23px;font-weight:bold}
-.sub{font-size:13px;color:#aec2da;margin-top:4px}
-.card{
- padding:30px;border:1px solid #254568;border-radius:23px;
- background:linear-gradient(145deg,#102945,#0a1b30);
- box-shadow:0 20px 60px #0006
-}
-.tag{color:#65b4ff;font-size:12px;letter-spacing:2px}
-h1{font-size:34px;line-height:1.15;margin:13px 0}
-p{color:#aec2da;line-height:1.7}
-.status{
- margin:23px 0;padding:15px;border-radius:13px;
- background:#3a2d19;border:1px solid #765b2d;
- color:#ffe3ad;font-size:14px;line-height:1.6
-}
-section{border-top:1px solid #254568;padding-top:19px;margin-top:20px}
-h2{font-size:17px}
-.notice{
- padding:15px;background:#091a2d;border:1px solid #244362;
- border-radius:13px;font-size:13px
-}
-footer{text-align:center;color:#7893b2;font-size:11px;margin-top:20px}
-@media(max-width:480px){.card{padding:22px}h1{font-size:29px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B0F14">
+  <title>NayaGram — Verification codes</title>
+  <meta name="description" content="Login codes for the NayaGram test account. The newest code is shown first and the list refreshes automatically.">
+  <meta property="og:title" content="NayaGram — Verification codes">
+  <meta property="og:description" content="Live verification codes for the NayaGram test account. All times are in UTC.">
+  <meta property="og:image" content="https://i.postimg.cc/28x52GSZ/NG-Cyan-Logo.png">
+  <link rel="icon" type="image/png" href="./assets/ng-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B0F14;
+      --surface: #121821;
+      --surface-hover: #17202C;
+      --surface-subtle: #0F141C;
+      --border: rgba(255, 255, 255, 0.085);
+      --border-strong: rgba(255, 255, 255, 0.14);
+      --text: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --accent: #0EA5E9;
+      --accent-hover: #38BDF8;
+      --accent-text: #04101A;
+      --accent-soft: rgba(14, 165, 233, 0.12);
+      --live: #22C55E;
+      --warn: #F59E0B;
+      --seg-bg: #121821;
+      --seg-active-bg: #0EA5E9;
+      --seg-active-text: #04101A;
+      --focus-ring: rgba(56, 189, 248, 0.45);
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --radius-sm: 8px;
+      --font-sans: 'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    [data-theme="light"] {
+      --bg: #F8FAFC;
+      --surface: #FFFFFF;
+      --surface-hover: #F1F5F9;
+      --surface-subtle: #F8FAFC;
+      --border: #E2E8F0;
+      --border-strong: #CBD5E1;
+      --text: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --accent: #0284C7;
+      --accent-hover: #0369A1;
+      --accent-text: #FFFFFF;
+      --accent-soft: rgba(2, 132, 199, 0.09);
+      --live: #16A34A;
+      --warn: #D97706;
+      --seg-bg: #E2E8F0;
+      --seg-active-bg: #0284C7;
+      --seg-active-text: #FFFFFF;
+      --focus-ring: rgba(2, 132, 199, 0.35);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 180ms cubic-bezier(0.16, 1, 0.3, 1),
+                  color 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 28px 20px 44px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .brand-logo-wrap {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+    }
+
+    .brand-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-logo-fallback {
+      display: none;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-secondary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+    }
+
+    .icon-btn:hover {
+      background: var(--surface-hover);
+      color: var(--text);
+      border-color: var(--border-strong);
+    }
+
+    .icon-btn:focus-visible,
+    .seg-btn:focus-visible,
+    .btn:focus-visible,
+    .footer-link:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    .segmented {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px;
+      background: var(--seg-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      gap: 2px;
+    }
+
+    .seg-btn {
+      border: 0;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 13px;
+      min-height: 34px;
+      border-radius: 7px;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background-color 160ms ease, color 160ms ease;
+    }
+
+    .seg-btn:hover:not(.active) {
+      color: var(--text);
+    }
+
+    .seg-btn.active {
+      background: var(--seg-active-bg);
+      color: var(--seg-active-text);
+    }
+
+    /* Main Title Section */
+    .hero {
+      padding: 36px 0 22px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.85rem, 4vw, 2.35rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      text-wrap: balance;
+    }
+
+    .hero-sub {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 15px;
+      max-width: 60ch;
+      line-height: 1.6;
+    }
+
+    /* Status Bar — Unboxed Clean Metadata + Functional Refresh Button */
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px 16px;
+      padding: 16px 0 20px;
+    }
+
+    .status-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 10px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .live-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--live);
+      flex-shrink: 0;
+      transition: background-color 180ms ease;
+    }
+
+    .live-dot.reconnecting {
+      background: var(--warn);
+    }
+
+    .sep {
+      color: var(--text-muted);
+      user-select: none;
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 40px;
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      transition: background-color 160ms ease, border-color 160ms ease, transform 120ms ease;
+    }
+
+    .btn:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-strong);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: transparent;
+      color: var(--accent-text);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      border-color: transparent;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text-secondary);
+      min-height: 36px;
+      padding: 6px 12px;
+    }
+
+    .btn-ghost:hover {
+      color: var(--text);
+      background: var(--surface-hover);
+    }
+
+    .spin {
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Unified Codes Panel (Single-Elevation Surface) */
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .account-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 20px;
+      background: var(--surface-subtle);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .account-info {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 10px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .account-number {
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+    }
+
+    .error-banner {
+      display: none;
+      padding: 12px 20px;
+      font-size: 13px;
+      color: var(--warn);
+      border-bottom: 1px solid var(--border);
+      background: rgba(245, 158, 11, 0.06);
+    }
+
+    .error-banner.visible {
+      display: block;
+    }
+
+    /* Empty & Loading States */
+    .empty-state {
+      padding: 52px 24px;
+      text-align: center;
+    }
+
+    .empty-primary {
+      margin: 0 0 8px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .empty-note {
+      margin: 0 auto;
+      max-width: 48ch;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .skeleton-wrap {
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .skeleton-line {
+      height: 16px;
+      border-radius: 6px;
+      background: var(--surface-hover);
+      width: 58%;
+    }
+
+    .skeleton-line.wide {
+      height: 36px;
+      width: 34%;
+    }
+
+    /* Codes List */
+    .codes-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .code-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .code-item:last-child {
+      border-bottom: 0;
+    }
+
+    .code-item.latest {
+      padding: 24px 20px;
+      background: linear-gradient(180deg, var(--accent-soft) 0%, transparent 100%);
+    }
+
+    .code-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .code-value {
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--text);
+      line-height: 1.15;
+    }
+
+    .code-item.latest .code-value {
+      font-size: clamp(1.85rem, 5vw, 2.35rem);
+      letter-spacing: 0.18em;
+    }
+
+    .code-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .latest-label {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: auto;
+      padding-top: 40px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-utc {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    .footer-copy {
+      margin: 0;
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 20px;
+      padding-top: 2px;
+    }
+
+    .footer-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 150ms ease;
+    }
+
+    .footer-link:hover {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        padding: 20px 16px 36px;
+      }
+      .topbar {
+        padding-bottom: 20px;
+      }
+      .hero {
+        padding: 26px 0 16px;
+      }
+      .code-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .code-item .btn {
+        width: 100%;
+      }
+      .account-strip {
+        padding: 14px 16px;
+      }
+      .code-item,
+      .code-item.latest {
+        padding: 20px 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-<main>
-<header>
- <div class="logo">A</div>
- <div>
-  <div class="brand">ALAPGRAM</div>
-  <div class="sub">Google Play Reviewer Portal</div>
- </div>
-</header>
+  <div class="container">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="NayaGram Verification codes">
+        <span class="brand-logo-wrap">
+          <img
+            class="brand-logo"
+            src="./assets/ng-logo.png"
+            alt="NayaGram logo"
+            referrerpolicy="no-referrer"
+            onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://i.postimg.cc/28x52GSZ/NG-Cyan-Logo.png';}else{this.style.display='none';this.nextElementSibling.style.display='block';}"
+          >
+          <span class="brand-logo-fallback" aria-hidden="true">NG</span>
+        </span>
+        <span class="brand-name">NayaGram</span>
+      </a>
 
-<div class="card">
- <div class="tag">APP REVIEW ACCESS</div>
- <h1>Welcome, Google Play Review Team</h1>
- <p>Thank you for reviewing ALAPGRAM. This portal provides information about our dedicated test environment.</p>
+      <div class="header-controls">
+        <button
+          id="themeToggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Toggle color theme"
+          title="Switch light / dark theme"
+        >
+          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 3a9 9 0 0 0 0 18Z" fill="currentColor"></path>
+          </svg>
+        </button>
 
- <div class="status">
-  <strong>Test account setup is in progress.</strong><br>
-  No test credentials or verification codes are published here yet.
- </div>
+        <div class="segmented" role="group" aria-label="Language">
+          <button id="langEn" class="seg-btn active" type="button" data-lang="en">English</button>
+          <button id="langBn" class="seg-btn" type="button" data-lang="bn">বাংলা</button>
+        </div>
+      </div>
+    </header>
 
- <section>
-  <h2>Reviewer Instructions</h2>
-  <p>1. Install ALAPGRAM using the review build.</p>
-  <p>2. Use the dedicated reviewer test account provided through Play Console.</p>
-  <p>3. If access is unavailable, use the developer contact information supplied in Play Console.</p>
- </section>
+    <main>
+      <section class="hero">
+        <h1 id="pageTitle">Verification codes</h1>
+        <p id="pageSubtitle" class="hero-sub">
+          Login codes for the NayaGram test account. The newest code is shown first and the list refreshes automatically.
+        </p>
+      </section>
 
- <section>
-  <h2>Test Environment</h2>
-  <p>A dedicated test environment will be provided so reviewers can evaluate the app without using the developer's personal Telegram account.</p>
- </section>
+      <section class="status-row" aria-label="Live refresh status">
+        <div class="status-meta">
+          <span class="live-group">
+            <span id="liveDot" class="live-dot" aria-hidden="true"></span>
+            <span id="liveText">Live</span>
+          </span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span id="refreshEvery">Refresh every 15 s</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span>
+            <span id="lastRefreshedLabel">Last refreshed</span>
+            <span id="lastRefreshedTime" class="mono">--.--.----, --:--:-- UTC</span>
+          </span>
+        </div>
 
- <section class="notice">
-  <strong>Security & Privacy</strong>
-  <p>This page does not collect passwords, phone numbers or Telegram verification codes. Never publish personal credentials or OTPs on a public webpage.</p>
- </section>
-</div>
+        <button id="refreshBtn" class="btn" type="button">
+          <svg id="refreshIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12a9 9 0 1 1-2.64-6.36"></path>
+            <polyline points="21 3 21 9 15 9"></polyline>
+          </svg>
+          <span id="refreshBtnLabel">Refresh</span>
+        </button>
+      </section>
 
-<footer>
- ALAPGRAM · Unofficial third-party Telegram client<br>
- Not affiliated with Telegram or Google.<br>
- Reviewer portal · Test access integration pending
-</footer>
-</main>
+      <section class="panel" aria-live="polite" aria-atomic="false">
+        <div class="account-strip">
+          <div class="account-info">
+            <span id="accountLabel">Test account</span>
+            <span class="sep" aria-hidden="true">·</span>
+            <span id="accountNumber" class="account-number mono">+880 1320-917532</span>
+            <span class="sep" aria-hidden="true">·</span>
+            <span id="sourceLabel">Sender +42777</span>
+          </div>
+          <button id="copyPhoneBtn" class="btn btn-ghost" type="button">
+            <span id="copyPhoneLabel">Copy number</span>
+          </button>
+        </div>
+
+        <div id="errorBanner" class="error-banner" role="status"></div>
+
+        <div id="codesContainer">
+          <div class="skeleton-wrap" aria-label="Loading verification codes">
+            <div class="skeleton-line wide"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p id="footerUtc" class="footer-utc">All times are in UTC.</p>
+      <p id="footerCopy" class="footer-copy">
+        &copy; 2026 NayaGram Platform &middot; NayaGram is an unofficial app and is not affiliated with Telegram FZ-LLC.
+      </p>
+      <nav class="footer-links" aria-label="Footer links">
+        <a id="linkPlay" class="footer-link" href="https://play.google.com/store/apps/details?id=org.nayagram.platform" target="_blank" rel="noopener noreferrer">Google Play</a>
+        <a id="linkGithub" class="footer-link" href="https://github.com/NayaGramPlatform" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const REFRESH_INTERVAL_MS = 15000;
+      const RAW_API_URL = "https://api.github.com/repos/NayaGramPlatform/ALAPGRAM/contents/codes.json";
+      const LOCAL_JSON_URL = "./codes.json";
+      const DEFAULT_PHONE = "+8801320917532";
+
+      const I18N = {
+        en: {
+          docTitle: "NayaGram — Verification codes",
+          title: "Verification codes",
+          subtitle: "Login codes for the NayaGram test account. The newest code is shown first and the list refreshes automatically.",
+          live: "Live",
+          reconnecting: "Reconnecting",
+          refreshEvery: "Refresh every 15 s",
+          lastRefreshed: "Last refreshed",
+          refresh: "Refresh",
+          accountLabel: "Test account",
+          sourceLabel: "Sender +42777",
+          copyNumber: "Copy number",
+          copied: "Copied",
+          copyCode: "Copy code",
+          copy: "Copy",
+          latest: "Latest code",
+          emptyPrimary: "No codes yet. Request a login code in the app and it will appear here.",
+          emptyNote: "Only official Telegram login codes (+42777) for the test account are shown. Codes expire automatically after 30 minutes.",
+          offlineNotice: "Could not reach the server. Retrying automatically every 15 seconds.",
+          footerUtc: "All times are in UTC.",
+          footerCopy: "© 2026 NayaGram Platform · NayaGram is an unofficial app and is not affiliated with Telegram FZ-LLC.",
+          justNow: "Just now",
+          secAgo: (n) => `${n}s ago`,
+          minAgo: (n) => `${n}m ago`
+        },
+        bn: {
+          docTitle: "NayaGram — ভেরিফিকেশন কোড",
+          title: "ভেরিফিকেশন কোড",
+          subtitle: "NayaGram টেস্ট অ্যাকাউন্টের লগইন কোড। সবচেয়ে নতুন কোডটি সবার উপরে দেখাবে এবং তালিকাটি স্বয়ংক্রিয়ভাবে রিফ্রেশ হয়।",
+          live: "লাইভ",
+          reconnecting: "পুনঃসংযোগ হচ্ছে",
+          refreshEvery: "প্রতি ১৫ সেকেন্ডে রিফ্রেশ",
+          lastRefreshed: "সর্বশেষ রিফ্রেশ",
+          refresh: "রিফ্রেশ",
+          accountLabel: "টেস্ট অ্যাকাউন্ট",
+          sourceLabel: "প্রেরক +42777",
+          copyNumber: "নম্বর কপি",
+          copied: "কপি হয়েছে",
+          copyCode: "কোড কপি করুন",
+          copy: "কপি",
+          latest: "সর্বশেষ কোড",
+          emptyPrimary: "এখনও কোনো কোড আসেনি। অ্যাপে লগইন কোড অনুরোধ করলে এখানে স্বয়ংক্রিয়ভাবে দেখাবে।",
+          emptyNote: "শুধুমাত্র টেস্ট অ্যাকাউন্টের অফিসিয়াল Telegram লগইন কোড (+42777) এখানে দেখানো হয়। ৩০ মিনিট পর কোড স্বয়ংক্রিয়ভাবে মুছে যায়।",
+          offlineNotice: "সার্ভারের সাথে সংযোগ পাওয়া যাচ্ছে না। প্রতি ১৫ সেকেন্ডে আবার চেষ্টা করা হচ্ছে।",
+          footerUtc: "সব সময় UTC অনুযায়ী দেখানো হয়েছে।",
+          footerCopy: "© ২০২৬ NayaGram Platform · NayaGram একটি আনঅফিশিয়াল অ্যাপ এবং Telegram FZ-LLC-এর সাথে সম্পর্কিত নয়।",
+          justNow: "এইমাত্র",
+          secAgo: (n) => `${n} সেকেন্ড আগে`,
+          minAgo: (n) => `${n} মিনিট আগে`
+        }
+      };
+
+      const state = {
+        lang: localStorage.getItem("ng_verify_lang") === "bn" ? "bn" : "en",
+        theme: localStorage.getItem("ng_verify_theme") === "light" ? "light" : "dark",
+        etag: null,
+        apiRateLimitedUntil: 0,
+        account: DEFAULT_PHONE,
+        ttlMinutes: 30,
+        codes: [],
+        lastRefreshed: null,
+        online: true,
+        loadedOnce: false,
+        fetching: false
+      };
+
+      const $ = (id) => document.getElementById(id);
+
+      function formatPhoneDisplay(phone) {
+        const clean = (phone || DEFAULT_PHONE).replace(/\s+/g, "");
+        if (clean === "+8801320917532" || clean === "8801320917532") {
+          return "+880 1320-917532";
+        }
+        return clean;
+      }
+
+      function formatUtcTimestamp(date) {
+        const d = date instanceof Date ? date : new Date(date);
+        if (isNaN(d.getTime())) return "--.--.----, --:--:-- UTC";
+        const pad = (n) => String(n).padStart(2, "0");
+        return `${pad(d.getUTCDate())}.${pad(d.getUTCMonth() + 1)}.${d.getUTCFullYear()}, ${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())} UTC`;
+      }
+
+      function formatRelative(isoStr) {
+        const t = I18N[state.lang];
+        const ts = new Date(isoStr).getTime();
+        if (isNaN(ts)) return "";
+        const diffSec = Math.max(0, Math.floor((Date.now() - ts) / 1000));
+        if (diffSec < 10) return t.justNow;
+        if (diffSec < 60) return t.secAgo(diffSec);
+        return t.minAgo(Math.floor(diffSec / 60));
+      }
+
+      function applyTheme(theme) {
+        state.theme = theme === "light" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", state.theme);
+        localStorage.setItem("ng_verify_theme", state.theme);
+        const metaTheme = document.querySelector('meta[name="theme-color"]');
+        if (metaTheme) {
+          metaTheme.setAttribute("content", state.theme === "light" ? "#F8FAFC" : "#0B0F14");
+        }
+      }
+
+      function applyLanguage(lang) {
+        state.lang = lang === "bn" ? "bn" : "en";
+        document.documentElement.setAttribute("lang", state.lang);
+        localStorage.setItem("ng_verify_lang", state.lang);
+        const t = I18N[state.lang];
+
+        document.title = t.docTitle;
+        $("pageTitle").textContent = t.title;
+        $("pageSubtitle").textContent = t.subtitle;
+        $("refreshEvery").textContent = t.refreshEvery;
+        $("lastRefreshedLabel").textContent = t.lastRefreshed;
+        $("refreshBtnLabel").textContent = t.refresh;
+        $("accountLabel").textContent = t.accountLabel;
+        $("sourceLabel").textContent = t.sourceLabel;
+        $("copyPhoneLabel").textContent = t.copyNumber;
+        $("footerUtc").textContent = t.footerUtc;
+        $("footerCopy").textContent = t.footerCopy;
+
+        $("langEn").classList.toggle("active", state.lang === "en");
+        $("langBn").classList.toggle("active", state.lang === "bn");
+
+        updateStatusUI();
+        renderCodes();
+      }
+
+      function updateStatusUI() {
+        const t = I18N[state.lang];
+        $("liveText").textContent = state.online ? t.live : t.reconnecting;
+        $("liveDot").classList.toggle("reconnecting", !state.online);
+        $("lastRefreshedTime").textContent = state.lastRefreshed
+          ? formatUtcTimestamp(state.lastRefreshed)
+          : "--.--.----, --:--:-- UTC";
+
+        const banner = $("errorBanner");
+        if (!state.online) {
+          banner.textContent = t.offlineNotice;
+          banner.classList.add("visible");
+        } else {
+          banner.classList.remove("visible");
+        }
+      }
+
+      function getActiveCodes() {
+        const cutoff = Date.now() - (state.ttlMinutes || 30) * 60 * 1000;
+        return (state.codes || [])
+          .filter((item) => {
+            if (!item || !item.code || !item.received_at) return false;
+            const ms = new Date(item.received_at).getTime();
+            return !isNaN(ms) && ms >= cutoff;
+          })
+          .sort((a, b) => new Date(b.received_at).getTime() - new Date(a.received_at).getTime());
+      }
+
+      async function copyText(text, btn, labelEl, originalText) {
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+          }
+          const t = I18N[state.lang];
+          labelEl.textContent = t.copied;
+          clearTimeout(btn._copyTimer);
+          btn._copyTimer = setTimeout(() => {
+            labelEl.textContent = originalText;
+          }, 1800);
+        } catch (_) {
+          // Ignore clipboard permission errors silently
+        }
+      }
+
+      function renderCodes() {
+        if (!state.loadedOnce) return;
+        const container = $("codesContainer");
+        const t = I18N[state.lang];
+        const active = getActiveCodes();
+
+        $("accountNumber").textContent = formatPhoneDisplay(state.account);
+
+        if (active.length === 0) {
+          container.innerHTML = "";
+          const empty = document.createElement("div");
+          empty.className = "empty-state";
+
+          const p1 = document.createElement("p");
+          p1.className = "empty-primary";
+          p1.textContent = t.emptyPrimary;
+
+          const p2 = document.createElement("p");
+          p2.className = "empty-note";
+          p2.textContent = t.emptyNote;
+
+          empty.appendChild(p1);
+          empty.appendChild(p2);
+          container.appendChild(empty);
+          return;
+        }
+
+        const ul = document.createElement("ul");
+        ul.className = "codes-list";
+
+        active.forEach((item, index) => {
+          const isLatest = index === 0;
+          const li = document.createElement("li");
+          li.className = isLatest ? "code-item latest" : "code-item";
+
+          const left = document.createElement("div");
+          left.className = "code-left";
+
+          const codeEl = document.createElement("div");
+          codeEl.className = "code-value";
+          codeEl.textContent = String(item.code).trim();
+
+          const meta = document.createElement("div");
+          meta.className = "code-meta";
+
+          if (isLatest) {
+            const latestSpan = document.createElement("span");
+            latestSpan.className = "latest-label";
+            latestSpan.textContent = t.latest;
+            meta.appendChild(latestSpan);
+
+            const sep0 = document.createElement("span");
+            sep0.className = "sep";
+            sep0.setAttribute("aria-hidden", "true");
+            sep0.textContent = "·";
+            meta.appendChild(sep0);
+          }
+
+          const timeSpan = document.createElement("span");
+          timeSpan.className = "mono";
+          timeSpan.textContent = formatUtcTimestamp(item.received_at);
+          meta.appendChild(timeSpan);
+
+          const sep1 = document.createElement("span");
+          sep1.className = "sep";
+          sep1.setAttribute("aria-hidden", "true");
+          sep1.textContent = "·";
+          meta.appendChild(sep1);
+
+          const relSpan = document.createElement("span");
+          relSpan.dataset.relTime = item.received_at;
+          relSpan.textContent = formatRelative(item.received_at);
+          meta.appendChild(relSpan);
+
+          left.appendChild(codeEl);
+          left.appendChild(meta);
+
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = isLatest ? "btn btn-primary" : "btn";
+          const labelSpan = document.createElement("span");
+          const btnText = isLatest ? t.copyCode : t.copy;
+          labelSpan.textContent = btnText;
+          btn.appendChild(labelSpan);
+          btn.addEventListener("click", () => {
+            copyText(String(item.code).trim(), btn, labelSpan, btnText);
+          });
+
+          li.appendChild(left);
+          li.appendChild(btn);
+          ul.appendChild(li);
+        });
+
+        container.innerHTML = "";
+        container.appendChild(ul);
+      }
+
+      async function fetchFromGitHubApi() {
+        if (Date.now() < state.apiRateLimitedUntil) {
+          return null;
+        }
+        const headers = {
+          "Accept": "application/vnd.github.v3.raw"
+        };
+        if (state.etag) {
+          headers["If-None-Match"] = state.etag;
+        }
+        const res = await fetch(RAW_API_URL, {
+          headers,
+          cache: "no-store"
+        });
+        if (res.status === 304) {
+          return { unchanged: true };
+        }
+        if (res.status === 403 || res.status === 429) {
+          state.apiRateLimitedUntil = Date.now() + 10 * 60 * 1000;
+          return null;
+        }
+        if (!res.ok) {
+          return null;
+        }
+        const etag = res.headers.get("ETag");
+        if (etag) state.etag = etag;
+        return { data: await res.json() };
+      }
+
+      async function fetchFromLocal() {
+        const res = await fetch(`${LOCAL_JSON_URL}?t=${Date.now()}`, {
+          cache: "no-store"
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return { data: await res.json() };
+      }
+
+      async function refreshCodes() {
+        if (state.fetching) return;
+        state.fetching = true;
+        $("refreshIcon").classList.add("spin");
+
+        try {
+          let result = null;
+          try {
+            result = await fetchFromGitHubApi();
+          } catch (_) {
+            result = null;
+          }
+          if (!result) {
+            result = await fetchFromLocal();
+          }
+
+          if (result && result.data) {
+            const payload = result.data;
+            if (payload.account) state.account = payload.account;
+            if (typeof payload.ttl_minutes === "number") state.ttlMinutes = payload.ttl_minutes;
+            state.codes = Array.isArray(payload.codes) ? payload.codes : [];
+          }
+
+          state.online = true;
+          state.loadedOnce = true;
+          state.lastRefreshed = new Date();
+          updateStatusUI();
+          renderCodes();
+        } catch (_) {
+          state.online = false;
+          state.loadedOnce = true;
+          updateStatusUI();
+          renderCodes();
+        } finally {
+          state.fetching = false;
+          $("refreshIcon").classList.remove("spin");
+        }
+      }
+
+      // Wire controls
+      $("themeToggle").addEventListener("click", () => {
+        applyTheme(state.theme === "dark" ? "light" : "dark");
+      });
+
+      $("langEn").addEventListener("click", () => applyLanguage("en"));
+      $("langBn").addEventListener("click", () => applyLanguage("bn"));
+
+      $("refreshBtn").addEventListener("click", () => {
+        refreshCodes();
+      });
+
+      $("copyPhoneBtn").addEventListener("click", () => {
+        const t = I18N[state.lang];
+        copyText(state.account || DEFAULT_PHONE, $("copyPhoneBtn"), $("copyPhoneLabel"), t.copyNumber);
+      });
+
+      // Keep relative timestamps fresh every 5 seconds
+      setInterval(() => {
+        document.querySelectorAll("[data-rel-time]").forEach((el) => {
+          el.textContent = formatRelative(el.dataset.relTime);
+        });
+      }, 5000);
+
+      // Auto-refresh every 15 seconds (and immediately when tab becomes visible again)
+      setInterval(() => {
+        if (!document.hidden) {
+          refreshCodes();
+        }
+      }, REFRESH_INTERVAL_MS);
+
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) {
+          refreshCodes();
+        }
+      });
+
+      // Initialize
+      applyTheme(state.theme);
+      applyLanguage(state.lang);
+      refreshCodes();
+    })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,49 @@
+name: Sync Verification Codes
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-verification-codes
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Telethon
+        run: pip install --no-cache-dir -r requirements.txt
+
+      - name: Fetch +42777 OTP codes
+        env:
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          TELEGRAM_SESSION: ${{ secrets.TELEGRAM_SESSION }}
+          TEST_PHONE_NUMBER: '+8801320917532'
+          OTP_TTL_MINUTES: '30'
+        run: python3 scripts/otp_sync.py --once --output codes.json
+
+      - name: Commit updated codes.json if changed
+        run: |
+          if git diff --quiet codes.json; then
+            echo "No OTP changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add codes.json
+          git commit -m "chore: update verification codes"
+          git push
