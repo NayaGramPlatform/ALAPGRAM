@@ -1,0 +1,63 @@
+name: Phone Session Setup (No Computer Needed)
+
+on:
+  workflow_dispatch:
+    inputs:
+      step:
+        description: 'Step 1: Send OTP to +8801320917532 | Step 2: Verify OTP & send session to Saved Messages'
+        required: true
+        type: choice
+        default: '1-send-otp'
+        options:
+          - '1-send-otp'
+          - '2-verify-otp'
+      otp_code:
+        description: '5-digit Telegram OTP code (only needed for Step 2; leave empty for Step 1)'
+        required: false
+        default: ''
+        type: string
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install --no-cache-dir -r requirements.txt
+
+      - name: Step 1 — Request Telegram OTP
+        if: inputs.step == '1-send-otp'
+        env:
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          TEST_PHONE_NUMBER: '+8801320917532'
+        run: python3 scripts/phone_setup.py send
+
+      - name: Upload encrypted pending state (1-day expiry)
+        if: inputs.step == '1-send-otp'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pending-otp-state
+          path: pending_login.enc
+          retention-days: 1
+
+      - name: Step 2 — Verify OTP & Deliver Session to Saved Messages
+        if: inputs.step == '2-verify-otp'
+        env:
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          TELEGRAM_2FA_PASSWORD: ${{ secrets.TELEGRAM_2FA_PASSWORD }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 scripts/phone_setup.py verify --code "${{ inputs.otp_code }}"

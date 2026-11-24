@@ -3,46 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0B0F14">
+  <meta name="theme-color" content="#090D12">
   <title>NayaGram — Verification codes</title>
-  <meta name="description" content="Login codes for the NayaGram test account. The newest code is shown first and the list refreshes automatically.">
+  <meta name="description" content="Live Telegram login codes for the NayaGram test account. The newest code appears first and refreshes automatically every 15 seconds.">
   <meta property="og:title" content="NayaGram — Verification codes">
   <meta property="og:description" content="Live verification codes for the NayaGram test account. All times are in UTC.">
   <meta property="og:image" content="https://i.postimg.cc/28x52GSZ/NG-Cyan-Logo.png">
   <link rel="icon" type="image/png" href="./assets/ng-logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0B0F14;
-      --surface: #121821;
+      --bg: #090D12;
+      --bg-glow: radial-gradient(65% 42% at 50% 0%, rgba(14, 165, 233, 0.13) 0%, rgba(14, 165, 233, 0.03) 45%, transparent 75%);
+      --surface: #111720;
       --surface-hover: #17202C;
-      --surface-subtle: #0F141C;
+      --surface-subtle: #0D121A;
       --border: rgba(255, 255, 255, 0.085);
-      --border-strong: rgba(255, 255, 255, 0.14);
+      --border-strong: rgba(255, 255, 255, 0.16);
       --text: #F1F5F9;
       --text-secondary: #94A3B8;
       --text-muted: #64748B;
       --accent: #0EA5E9;
+      --accent-bright: #38BDF8;
       --accent-hover: #38BDF8;
       --accent-text: #04101A;
-      --accent-soft: rgba(14, 165, 233, 0.12);
+      --accent-soft: rgba(14, 165, 233, 0.11);
+      --accent-ring: rgba(56, 189, 248, 0.28);
       --live: #22C55E;
       --warn: #F59E0B;
-      --seg-bg: #121821;
+      --seg-bg: #111720;
       --seg-active-bg: #0EA5E9;
       --seg-active-text: #04101A;
       --focus-ring: rgba(56, 189, 248, 0.45);
-      --radius-lg: 16px;
+      --logo-shadow: 0 8px 24px -6px rgba(14, 165, 233, 0.35);
+      --radius-lg: 18px;
       --radius-md: 10px;
-      --radius-sm: 8px;
       --font-sans: 'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
     }
 
     [data-theme="light"] {
       --bg: #F8FAFC;
+      --bg-glow: radial-gradient(65% 40% at 50% 0%, rgba(2, 132, 199, 0.09) 0%, rgba(2, 132, 199, 0.02) 48%, transparent 75%);
       --surface: #FFFFFF;
       --surface-hover: #F1F5F9;
       --surface-subtle: #F8FAFC;
@@ -52,15 +56,18 @@
       --text-secondary: #475569;
       --text-muted: #64748B;
       --accent: #0284C7;
+      --accent-bright: #0284C7;
       --accent-hover: #0369A1;
       --accent-text: #FFFFFF;
-      --accent-soft: rgba(2, 132, 199, 0.09);
+      --accent-soft: rgba(2, 132, 199, 0.08);
+      --accent-ring: rgba(2, 132, 199, 0.22);
       --live: #16A34A;
       --warn: #D97706;
       --seg-bg: #E2E8F0;
       --seg-active-bg: #0284C7;
       --seg-active-text: #FFFFFF;
       --focus-ring: rgba(2, 132, 199, 0.35);
+      --logo-shadow: 0 8px 20px -6px rgba(2, 132, 199, 0.25);
     }
 
     *, *::before, *::after {
@@ -76,6 +83,8 @@
       margin: 0;
       min-height: 100vh;
       background-color: var(--bg);
+      background-image: var(--bg-glow);
+      background-repeat: no-repeat;
       color: var(--text);
       font-family: var(--font-sans);
       font-size: 15px;
@@ -88,9 +97,9 @@
 
     .container {
       width: 100%;
-      max-width: 780px;
+      max-width: 820px;
       margin: 0 auto;
-      padding: 28px 20px 44px;
+      padding: 28px 22px 48px;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -102,14 +111,14 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding-bottom: 28px;
+      padding-bottom: 24px;
       border-bottom: 1px solid var(--border);
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 13px;
       text-decoration: none;
       color: var(--text);
       white-space: nowrap;
@@ -117,15 +126,16 @@
     }
 
     .brand-logo-wrap {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
       overflow: hidden;
       flex-shrink: 0;
       display: grid;
       place-items: center;
       background: var(--accent-soft);
-      border: 1px solid var(--border);
+      border: 1px solid var(--accent-ring);
+      box-shadow: var(--logo-shadow);
     }
 
     .brand-logo {
@@ -137,16 +147,16 @@
 
     .brand-logo-fallback {
       display: none;
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--accent);
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--accent-bright);
       letter-spacing: -0.02em;
     }
 
     .brand-name {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
       line-height: 1;
     }
 
@@ -202,7 +212,7 @@
       font-family: inherit;
       font-size: 13px;
       font-weight: 600;
-      padding: 7px 13px;
+      padding: 7px 14px;
       min-height: 34px;
       border-radius: 7px;
       cursor: pointer;
@@ -220,36 +230,44 @@
       color: var(--seg-active-text);
     }
 
-    /* Main Title Section */
+    /* Hero */
     .hero {
-      padding: 36px 0 22px;
+      padding: 38px 0 22px;
+    }
+
+    .hero-kicker {
+      margin: 0 0 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-bright);
+      letter-spacing: -0.01em;
     }
 
     .hero h1 {
-      margin: 0 0 10px;
-      font-size: clamp(1.85rem, 4vw, 2.35rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4.5vw, 2.65rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.12;
       text-wrap: balance;
     }
 
     .hero-sub {
       margin: 0;
       color: var(--text-secondary);
-      font-size: 15px;
-      max-width: 60ch;
-      line-height: 1.6;
+      font-size: 15.5px;
+      max-width: 62ch;
+      line-height: 1.65;
     }
 
-    /* Status Bar — Unboxed Clean Metadata + Functional Refresh Button */
+    /* Status Bar — Unboxed Clean Metadata + Refresh Action */
     .status-row {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 12px 16px;
-      padding: 16px 0 20px;
+      padding: 14px 0 18px;
     }
 
     .status-meta {
@@ -297,12 +315,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
+      gap: 8px;
       min-height: 40px;
       padding: 8px 16px;
       border-radius: var(--radius-md);
       font-family: inherit;
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
@@ -338,7 +356,8 @@
       border-color: var(--border);
       color: var(--text-secondary);
       min-height: 36px;
-      padding: 6px 12px;
+      padding: 6px 13px;
+      font-size: 13px;
     }
 
     .btn-ghost:hover {
@@ -347,19 +366,36 @@
     }
 
     .spin {
-      animation: spin 0.8s linear infinite;
+      animation: spin 0.75s linear infinite;
     }
 
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
 
-    /* Unified Codes Panel (Single-Elevation Surface) */
+    /* Unified Single-Elevation Codes Panel */
     .panel {
+      position: relative;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
+    }
+
+    .progress-track {
+      height: 2px;
+      width: 100%;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 100%;
+      background: var(--accent);
+      opacity: 0.75;
+      transform-origin: left center;
+      transform: scaleX(0);
     }
 
     .account-strip {
@@ -368,7 +404,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding: 14px 20px;
+      padding: 15px 22px;
       background: var(--surface-subtle);
       border-bottom: 1px solid var(--border);
     }
@@ -385,13 +421,13 @@
     .account-number {
       color: var(--text);
       font-weight: 600;
-      font-size: 14px;
-      letter-spacing: 0.01em;
+      font-size: 14.5px;
+      letter-spacing: 0.02em;
     }
 
     .error-banner {
       display: none;
-      padding: 12px 20px;
+      padding: 12px 22px;
       font-size: 13px;
       color: var(--warn);
       border-bottom: 1px solid var(--border);
@@ -404,40 +440,63 @@
 
     /* Empty & Loading States */
     .empty-state {
-      padding: 52px 24px;
+      padding: 58px 26px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .empty-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-soft);
+      color: var(--accent-bright);
+      margin-bottom: 6px;
+    }
+
+    .empty-title {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
     }
 
     .empty-primary {
-      margin: 0 0 8px;
-      font-size: 15px;
-      font-weight: 500;
+      margin: 0;
+      font-size: 14.5px;
       color: var(--text-secondary);
+      max-width: 48ch;
     }
 
     .empty-note {
-      margin: 0 auto;
-      max-width: 48ch;
-      font-size: 13px;
+      margin: 4px 0 0;
+      max-width: 52ch;
+      font-size: 12.5px;
       color: var(--text-muted);
     }
 
     .skeleton-wrap {
-      padding: 28px 20px;
+      padding: 30px 22px;
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
     .skeleton-line {
-      height: 16px;
+      height: 15px;
       border-radius: 6px;
       background: var(--surface-hover);
-      width: 58%;
+      width: 56%;
     }
 
     .skeleton-line.wide {
-      height: 36px;
+      height: 38px;
       width: 34%;
     }
 
@@ -453,7 +512,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 18px 20px;
+      padding: 18px 22px;
       border-bottom: 1px solid var(--border);
     }
 
@@ -462,14 +521,14 @@
     }
 
     .code-item.latest {
-      padding: 24px 20px;
+      padding: 28px 22px;
       background: linear-gradient(180deg, var(--accent-soft) 0%, transparent 100%);
     }
 
     .code-left {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 7px;
       min-width: 0;
     }
 
@@ -478,14 +537,14 @@
       font-variant-numeric: tabular-nums;
       font-size: 24px;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       color: var(--text);
       line-height: 1.15;
     }
 
     .code-item.latest .code-value {
-      font-size: clamp(1.85rem, 5vw, 2.35rem);
-      letter-spacing: 0.18em;
+      font-size: clamp(2rem, 5.5vw, 2.65rem);
+      letter-spacing: 0.22em;
     }
 
     .code-meta {
@@ -498,14 +557,62 @@
     }
 
     .latest-label {
-      color: var(--accent);
+      color: var(--accent-bright);
+      font-weight: 700;
+    }
+
+    /* Clean 3-Step Reviewer Guide (Open Whitespace — No Nested Boxes) */
+    .steps-section {
+      margin-top: 32px;
+      padding-top: 26px;
+      border-top: 1px solid var(--border);
+    }
+
+    .steps-heading {
+      margin: 0 0 18px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px 28px;
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .step-title {
+      margin: 0;
+      font-size: 13.5px;
       font-weight: 600;
+      color: var(--text);
+    }
+
+    .step-num {
+      color: var(--accent-bright);
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+      margin-right: 6px;
+    }
+
+    .step-desc {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
     }
 
     /* Footer */
     .footer {
       margin-top: auto;
-      padding-top: 40px;
+      padding-top: 44px;
       text-align: center;
       color: var(--text-muted);
       font-size: 13px;
@@ -518,20 +625,21 @@
       margin: 0;
       color: var(--text-secondary);
       font-size: 13px;
+      font-weight: 500;
     }
 
     .footer-copy {
       margin: 0;
       font-size: 12.5px;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .footer-links {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 8px 20px;
-      padding-top: 2px;
+      gap: 8px 22px;
+      padding-top: 4px;
     }
 
     .footer-link {
@@ -548,12 +656,27 @@
       text-underline-offset: 3px;
     }
 
+    @media (max-width: 680px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+
     @media (max-width: 560px) {
       .container {
         padding: 20px 16px 36px;
       }
       .topbar {
-        padding-bottom: 20px;
+        padding-bottom: 18px;
+      }
+      .brand-logo-wrap {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+      }
+      .brand-name {
+        font-size: 18px;
       }
       .hero {
         padding: 26px 0 16px;
@@ -572,12 +695,18 @@
       .code-item.latest {
         padding: 20px 16px;
       }
+      .empty-state {
+        padding: 44px 18px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
+      }
+      .progress-bar {
+        display: none;
       }
     }
   </style>
@@ -590,7 +719,7 @@
           <img
             class="brand-logo"
             src="./assets/ng-logo.png"
-            alt="NayaGram logo"
+            alt="NayaGram official logo"
             referrerpolicy="no-referrer"
             onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://i.postimg.cc/28x52GSZ/NG-Cyan-Logo.png';}else{this.style.display='none';this.nextElementSibling.style.display='block';}"
           >
@@ -607,7 +736,7 @@
           aria-label="Toggle color theme"
           title="Switch light / dark theme"
         >
-          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="9"></circle>
             <path d="M12 3a9 9 0 0 0 0 18Z" fill="currentColor"></path>
           </svg>
@@ -622,9 +751,10 @@
 
     <main>
       <section class="hero">
+        <p id="heroKicker" class="hero-kicker">Official test account access · NayaGram</p>
         <h1 id="pageTitle">Verification codes</h1>
         <p id="pageSubtitle" class="hero-sub">
-          Login codes for the NayaGram test account. The newest code is shown first and the list refreshes automatically.
+          Live Telegram login codes for the NayaGram test account. The newest code appears first and refreshes automatically every 15 seconds.
         </p>
       </section>
 
@@ -644,7 +774,7 @@
         </div>
 
         <button id="refreshBtn" class="btn" type="button">
-          <svg id="refreshIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg id="refreshIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 12a9 9 0 1 1-2.64-6.36"></path>
             <polyline points="21 3 21 9 15 9"></polyline>
           </svg>
@@ -653,6 +783,10 @@
       </section>
 
       <section class="panel" aria-live="polite" aria-atomic="false">
+        <div class="progress-track" aria-hidden="true">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+
         <div class="account-strip">
           <div class="account-info">
             <span id="accountLabel">Test account</span>
@@ -662,6 +796,10 @@
             <span id="sourceLabel">Sender +42777</span>
           </div>
           <button id="copyPhoneBtn" class="btn btn-ghost" type="button">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
             <span id="copyPhoneLabel">Copy number</span>
           </button>
         </div>
@@ -675,12 +813,30 @@
           </div>
         </div>
       </section>
+
+      <section class="steps-section" aria-label="How to sign in">
+        <h2 id="stepsHeading" class="steps-heading">How to sign in with the test account</h2>
+        <div class="steps-grid">
+          <div class="step-item">
+            <h3 class="step-title"><span class="step-num">01</span><span id="step1Title">Enter test number</span></h3>
+            <p id="step1Desc" class="step-desc">Open NayaGram and request a login code for +880 1320-917532.</p>
+          </div>
+          <div class="step-item">
+            <h3 class="step-title"><span class="step-num">02</span><span id="step2Title">Wait for code</span></h3>
+            <p id="step2Desc" class="step-desc">Official Telegram codes from +42777 appear automatically above.</p>
+          </div>
+          <div class="step-item">
+            <h3 class="step-title"><span class="step-num">03</span><span id="step3Title">Copy and verify</span></h3>
+            <p id="step3Desc" class="step-desc">Copy the newest 5-digit code and paste it in NayaGram to continue.</p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
       <p id="footerUtc" class="footer-utc">All times are in UTC.</p>
       <p id="footerCopy" class="footer-copy">
-        &copy; 2026 NayaGram Platform &middot; NayaGram is an unofficial app and is not affiliated with Telegram FZ-LLC.
+        &copy; 2026 NayaGram Platform &middot; NayaGram is an unofficial Telegram client and is not affiliated with Telegram FZ-LLC.
       </p>
       <nav class="footer-links" aria-label="Footer links">
         <a id="linkPlay" class="footer-link" href="https://play.google.com/store/apps/details?id=org.nayagram.platform" target="_blank" rel="noopener noreferrer">Google Play</a>
@@ -699,8 +855,9 @@
       const I18N = {
         en: {
           docTitle: "NayaGram — Verification codes",
+          kicker: "Official test account access · NayaGram",
           title: "Verification codes",
-          subtitle: "Login codes for the NayaGram test account. The newest code is shown first and the list refreshes automatically.",
+          subtitle: "Live Telegram login codes for the NayaGram test account. The newest code appears first and refreshes automatically every 15 seconds.",
           live: "Live",
           reconnecting: "Reconnecting",
           refreshEvery: "Refresh every 15 s",
@@ -713,19 +870,28 @@
           copyCode: "Copy code",
           copy: "Copy",
           latest: "Latest code",
-          emptyPrimary: "No codes yet. Request a login code in the app and it will appear here.",
-          emptyNote: "Only official Telegram login codes (+42777) for the test account are shown. Codes expire automatically after 30 minutes.",
+          emptyTitle: "No codes yet",
+          emptyPrimary: "Request a login code in NayaGram using +880 1320-917532 and it will appear here automatically.",
+          emptyNote: "Only official Telegram login codes (+42777) for this test account are shown · Codes expire after 30 minutes",
           offlineNotice: "Could not reach the server. Retrying automatically every 15 seconds.",
+          stepsHeading: "How to sign in with the test account",
+          step1Title: "Enter test number",
+          step1Desc: "Open NayaGram and request a login code for +880 1320-917532.",
+          step2Title: "Wait for code",
+          step2Desc: "Official Telegram codes from +42777 appear automatically above.",
+          step3Title: "Copy and verify",
+          step3Desc: "Copy the newest 5-digit code and paste it in NayaGram to continue.",
           footerUtc: "All times are in UTC.",
-          footerCopy: "© 2026 NayaGram Platform · NayaGram is an unofficial app and is not affiliated with Telegram FZ-LLC.",
+          footerCopy: "© 2026 NayaGram Platform · NayaGram is an unofficial Telegram client and is not affiliated with Telegram FZ-LLC.",
           justNow: "Just now",
           secAgo: (n) => `${n}s ago`,
           minAgo: (n) => `${n}m ago`
         },
         bn: {
           docTitle: "NayaGram — ভেরিফিকেশন কোড",
+          kicker: "অফিশিয়াল টেস্ট অ্যাকাউন্ট এক্সেস · NayaGram",
           title: "ভেরিফিকেশন কোড",
-          subtitle: "NayaGram টেস্ট অ্যাকাউন্টের লগইন কোড। সবচেয়ে নতুন কোডটি সবার উপরে দেখাবে এবং তালিকাটি স্বয়ংক্রিয়ভাবে রিফ্রেশ হয়।",
+          subtitle: "NayaGram টেস্ট অ্যাকাউন্টের লাইভ Telegram লগইন কোড। সবচেয়ে নতুন কোডটি সবার উপরে দেখায় এবং প্রতি ১৫ সেকেন্ডে স্বয়ংক্রিয়ভাবে রিফ্রেশ হয়।",
           live: "লাইভ",
           reconnecting: "পুনঃসংযোগ হচ্ছে",
           refreshEvery: "প্রতি ১৫ সেকেন্ডে রিফ্রেশ",
@@ -738,11 +904,19 @@
           copyCode: "কোড কপি করুন",
           copy: "কপি",
           latest: "সর্বশেষ কোড",
-          emptyPrimary: "এখনও কোনো কোড আসেনি। অ্যাপে লগইন কোড অনুরোধ করলে এখানে স্বয়ংক্রিয়ভাবে দেখাবে।",
-          emptyNote: "শুধুমাত্র টেস্ট অ্যাকাউন্টের অফিসিয়াল Telegram লগইন কোড (+42777) এখানে দেখানো হয়। ৩০ মিনিট পর কোড স্বয়ংক্রিয়ভাবে মুছে যায়।",
+          emptyTitle: "এখনও কোনো কোড আসেনি",
+          emptyPrimary: "NayaGram অ্যাপে +880 1320-917532 দিয়ে লগইন কোড অনুরোধ করলে এখানে স্বয়ংক্রিয়ভাবে দেখাবে।",
+          emptyNote: "শুধুমাত্র এই টেস্ট অ্যাকাউন্টের অফিসিয়াল Telegram (+42777) লগইন কোড দেখানো হয় · ৩০ মিনিট পর কোড মুছে যায়",
           offlineNotice: "সার্ভারের সাথে সংযোগ পাওয়া যাচ্ছে না। প্রতি ১৫ সেকেন্ডে আবার চেষ্টা করা হচ্ছে।",
+          stepsHeading: "টেস্ট অ্যাকাউন্টে লগইন করার নিয়ম",
+          step1Title: "টেস্ট নম্বর দিন",
+          step1Desc: "NayaGram খুলে +880 1320-917532 নম্বরটি দিয়ে কোড অনুরোধ করুন।",
+          step2Title: "কোডের জন্য অপেক্ষা করুন",
+          step2Desc: "+42777 থেকে আসা অফিসিয়াল Telegram কোড উপরে স্বয়ংক্রিয়ভাবে দেখাবে।",
+          step3Title: "কপি করে ভেরিফাই করুন",
+          step3Desc: "নতুন ৫-ডিজিটের কোডটি কপি করে NayaGram-এ পেস্ট করলেই লগইন সম্পন্ন হবে।",
           footerUtc: "সব সময় UTC অনুযায়ী দেখানো হয়েছে।",
-          footerCopy: "© ২০২৬ NayaGram Platform · NayaGram একটি আনঅফিশিয়াল অ্যাপ এবং Telegram FZ-LLC-এর সাথে সম্পর্কিত নয়।",
+          footerCopy: "© ২০২৬ NayaGram Platform · NayaGram একটি আনঅফিশিয়াল Telegram ক্লায়েন্ট এবং Telegram FZ-LLC-এর সাথে সম্পর্কিত নয়।",
           justNow: "এইমাত্র",
           secAgo: (n) => `${n} সেকেন্ড আগে`,
           minAgo: (n) => `${n} মিনিট আগে`
@@ -790,13 +964,23 @@
         return t.minAgo(Math.floor(diffSec / 60));
       }
 
+      function restartProgressBar() {
+        const bar = $("progressBar");
+        if (!bar) return;
+        bar.style.transition = "none";
+        bar.style.transform = "scaleX(0)";
+        void bar.offsetWidth;
+        bar.style.transition = `transform ${REFRESH_INTERVAL_MS}ms linear`;
+        bar.style.transform = "scaleX(1)";
+      }
+
       function applyTheme(theme) {
         state.theme = theme === "light" ? "light" : "dark";
         document.documentElement.setAttribute("data-theme", state.theme);
         localStorage.setItem("ng_verify_theme", state.theme);
         const metaTheme = document.querySelector('meta[name="theme-color"]');
         if (metaTheme) {
-          metaTheme.setAttribute("content", state.theme === "light" ? "#F8FAFC" : "#0B0F14");
+          metaTheme.setAttribute("content", state.theme === "light" ? "#F8FAFC" : "#090D12");
         }
       }
 
@@ -807,6 +991,7 @@
         const t = I18N[state.lang];
 
         document.title = t.docTitle;
+        $("heroKicker").textContent = t.kicker;
         $("pageTitle").textContent = t.title;
         $("pageSubtitle").textContent = t.subtitle;
         $("refreshEvery").textContent = t.refreshEvery;
@@ -815,6 +1000,13 @@
         $("accountLabel").textContent = t.accountLabel;
         $("sourceLabel").textContent = t.sourceLabel;
         $("copyPhoneLabel").textContent = t.copyNumber;
+        $("stepsHeading").textContent = t.stepsHeading;
+        $("step1Title").textContent = t.step1Title;
+        $("step1Desc").textContent = t.step1Desc;
+        $("step2Title").textContent = t.step2Title;
+        $("step2Desc").textContent = t.step2Desc;
+        $("step3Title").textContent = t.step3Title;
+        $("step3Desc").textContent = t.step3Desc;
         $("footerUtc").textContent = t.footerUtc;
         $("footerCopy").textContent = t.footerCopy;
 
@@ -853,6 +1045,31 @@
           .sort((a, b) => new Date(b.received_at).getTime() - new Date(a.received_at).getTime());
       }
 
+      function createCopySvg() {
+        const ns = "http://www.w3.org/2000/svg";
+        const svg = document.createElementNS(ns, "svg");
+        svg.setAttribute("width", "15");
+        svg.setAttribute("height", "15");
+        svg.setAttribute("viewBox", "0 0 24 24");
+        svg.setAttribute("fill", "none");
+        svg.setAttribute("stroke", "currentColor");
+        svg.setAttribute("stroke-width", "2.1");
+        svg.setAttribute("stroke-linecap", "round");
+        svg.setAttribute("stroke-linejoin", "round");
+        svg.setAttribute("aria-hidden", "true");
+        const rect = document.createElementNS(ns, "rect");
+        rect.setAttribute("x", "9");
+        rect.setAttribute("y", "9");
+        rect.setAttribute("width", "13");
+        rect.setAttribute("height", "13");
+        rect.setAttribute("rx", "2");
+        const path = document.createElementNS(ns, "path");
+        path.setAttribute("d", "M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1");
+        svg.appendChild(rect);
+        svg.appendChild(path);
+        return svg;
+      }
+
       async function copyText(text, btn, labelEl, originalText) {
         try {
           if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -873,9 +1090,7 @@
           btn._copyTimer = setTimeout(() => {
             labelEl.textContent = originalText;
           }, 1800);
-        } catch (_) {
-          // Ignore clipboard permission errors silently
-        }
+        } catch (_) {}
       }
 
       function renderCodes() {
@@ -891,6 +1106,15 @@
           const empty = document.createElement("div");
           empty.className = "empty-state";
 
+          const iconBox = document.createElement("div");
+          iconBox.className = "empty-icon";
+          iconBox.setAttribute("aria-hidden", "true");
+          iconBox.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>';
+
+          const heading = document.createElement("p");
+          heading.className = "empty-title";
+          heading.textContent = t.emptyTitle;
+
           const p1 = document.createElement("p");
           p1.className = "empty-primary";
           p1.textContent = t.emptyPrimary;
@@ -899,6 +1123,8 @@
           p2.className = "empty-note";
           p2.textContent = t.emptyNote;
 
+          empty.appendChild(iconBox);
+          empty.appendChild(heading);
           empty.appendChild(p1);
           empty.appendChild(p2);
           container.appendChild(empty);
@@ -958,6 +1184,7 @@
           const btn = document.createElement("button");
           btn.type = "button";
           btn.className = isLatest ? "btn btn-primary" : "btn";
+          btn.appendChild(createCopySvg());
           const labelSpan = document.createElement("span");
           const btnText = isLatest ? t.copyCode : t.copy;
           labelSpan.textContent = btnText;
@@ -1012,6 +1239,18 @@
         return { data: await res.json() };
       }
 
+      let pollTimer = null;
+
+      function scheduleNextPoll() {
+        clearInterval(pollTimer);
+        restartProgressBar();
+        pollTimer = setInterval(() => {
+          if (!document.hidden) {
+            refreshCodes();
+          }
+        }, REFRESH_INTERVAL_MS);
+      }
+
       async function refreshCodes() {
         if (state.fetching) return;
         state.fetching = true;
@@ -1048,6 +1287,7 @@
         } finally {
           state.fetching = false;
           $("refreshIcon").classList.remove("spin");
+          restartProgressBar();
         }
       }
 
@@ -1061,6 +1301,7 @@
 
       $("refreshBtn").addEventListener("click", () => {
         refreshCodes();
+        scheduleNextPoll();
       });
 
       $("copyPhoneBtn").addEventListener("click", () => {
@@ -1075,16 +1316,10 @@
         });
       }, 5000);
 
-      // Auto-refresh every 15 seconds (and immediately when tab becomes visible again)
-      setInterval(() => {
-        if (!document.hidden) {
-          refreshCodes();
-        }
-      }, REFRESH_INTERVAL_MS);
-
       document.addEventListener("visibilitychange", () => {
         if (!document.hidden) {
           refreshCodes();
+          scheduleNextPoll();
         }
       });
 
@@ -1092,6 +1327,7 @@
       applyTheme(state.theme);
       applyLanguage(state.lang);
       refreshCodes();
+      scheduleNextPoll();
     })();
   </script>
 </body>
