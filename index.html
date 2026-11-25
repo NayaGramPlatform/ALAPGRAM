@@ -798,14 +798,15 @@
     (function () {
       const REFRESH_SECONDS = 25;
       const REFRESH_INTERVAL_MS = REFRESH_SECONDS * 1000;
+      const PRIMARY_LIVE_URL = "https://nayagram-otp-sync.onrender.com/codes.json";
       const RAW_API_URL = "https://api.github.com/repos/NayaGramPlatform/ALAPGRAM/contents/codes.json";
       const RAW_CDN_URL = "https://raw.githubusercontent.com/NayaGramPlatform/ALAPGRAM/main/codes.json";
       const LOCAL_JSON_URL = "./codes.json";
       const LIVE_API_PARAM = (() => {
         try {
           const u = new URLSearchParams(window.location.search).get("api");
-          return u && /^https:\/\//.test(u) ? u.replace(/\/+$/, "") + "/codes.json" : "";
-        } catch (_) { return ""; }
+          return u && /^https:\/\//.test(u) ? u.replace(/\/+$/, "") + "/codes.json" : PRIMARY_LIVE_URL;
+        } catch (_) { return PRIMARY_LIVE_URL; }
       })();
 
       const SUN_SVG = '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>';
@@ -1219,11 +1220,20 @@
         return { data: await res.json() };
       }
 
-      async function fetchJsonNoCache(url) {
+      async function fetchJsonNoCache(url, timeoutMs = 6000) {
         const sep = url.includes("?") ? "&" : "?";
-        const res = await fetch(`${url}${sep}t=${Date.now()}`, { cache: "no-store" });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return { data: await res.json() };
+        const ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
+        const timer = ctrl ? setTimeout(() => ctrl.abort(), timeoutMs) : null;
+        try {
+          const res = await fetch(`${url}${sep}t=${Date.now()}`, {
+            cache: "no-store",
+            signal: ctrl ? ctrl.signal : undefined
+          });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return { data: await res.json() };
+        } finally {
+          if (timer) clearTimeout(timer);
+        }
       }
 
       async function refreshCodes() {
