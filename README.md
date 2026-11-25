@@ -1,4 +1,4 @@
-<div align="center">
+ <div align="center">
 
 <img src="./assets/ng-logo.png" alt="NayaGram Official Logo" width="108" height="108" />
 
