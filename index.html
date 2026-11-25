@@ -799,7 +799,14 @@
       const REFRESH_SECONDS = 25;
       const REFRESH_INTERVAL_MS = REFRESH_SECONDS * 1000;
       const RAW_API_URL = "https://api.github.com/repos/NayaGramPlatform/ALAPGRAM/contents/codes.json";
+      const RAW_CDN_URL = "https://raw.githubusercontent.com/NayaGramPlatform/ALAPGRAM/main/codes.json";
       const LOCAL_JSON_URL = "./codes.json";
+      const LIVE_API_PARAM = (() => {
+        try {
+          const u = new URLSearchParams(window.location.search).get("api");
+          return u && /^https:\/\//.test(u) ? u.replace(/\/+$/, "") + "/codes.json" : "";
+        } catch (_) { return ""; }
+      })();
 
       const SUN_SVG = '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>';
       const MOON_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>';
@@ -1212,8 +1219,9 @@
         return { data: await res.json() };
       }
 
-      async function fetchFromLocal() {
-        const res = await fetch(`${LOCAL_JSON_URL}?t=${Date.now()}`, { cache: "no-store" });
+      async function fetchJsonNoCache(url) {
+        const sep = url.includes("?") ? "&" : "?";
+        const res = await fetch(`${url}${sep}t=${Date.now()}`, { cache: "no-store" });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return { data: await res.json() };
       }
@@ -1225,13 +1233,17 @@
 
         try {
           let result = null;
-          try {
-            result = await fetchFromGitHubApi();
-          } catch (_) {
-            result = null;
+          if (LIVE_API_PARAM) {
+            try { result = await fetchJsonNoCache(LIVE_API_PARAM); } catch (_) { result = null; }
           }
           if (!result) {
-            result = await fetchFromLocal();
+            try { result = await fetchFromGitHubApi(); } catch (_) { result = null; }
+          }
+          if (!result) {
+            try { result = await fetchJsonNoCache(RAW_CDN_URL); } catch (_) { result = null; }
+          }
+          if (!result) {
+            result = await fetchJsonNoCache(LOCAL_JSON_URL);
           }
 
           if (result && result.data) {
